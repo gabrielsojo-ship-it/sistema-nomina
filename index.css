@@ -1,0 +1,97 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  Usamos CSS estándar en lugar de @apply para garantizar compatibilidad 
+  en entornos de vista previa sin compilación PostCSS inmediata.
+*/
+
+.glass-panel {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.dark .glass-panel {
+  background: rgba(30, 41, 59, 0.65);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.glass-input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.glass-input:focus {
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.dark .glass-input {
+  background-color: rgba(30, 41, 59, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.dark .glass-input::placeholder {
+  color: #94a3b8;
+}
+
+.dark .glass-input:focus {
+  background-color: rgba(15, 23, 42, 0.8);
+  border-color: #6366f1;
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Background Gradients */
+html.dark body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%), 
+    radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+html:not(.dark) body {
+  background-color: #f8fafc;
+  color: #0f172a;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.05) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
